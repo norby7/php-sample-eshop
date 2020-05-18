@@ -65,10 +65,8 @@ $productReviews = $shop->getProductReviews($productUID);
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
@@ -78,6 +76,12 @@ $productReviews = $shop->getProductReviews($productUID);
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cart.php">
+                        <i class="fa fa-shopping-cart"></i> Cart
+                        <span class="badge badge-light" id="cartItems">0</span>
+                    </a>
                 </li>
             </ul>
         </div>
@@ -108,6 +112,8 @@ $productReviews = $shop->getProductReviews($productUID);
                     <h3 class="card-title"><?php echo $productInfo['name'] ?></h3>
                     <h4>$<?php echo $productInfo['price'] ?></h4>
                     <p class="card-text"><?php echo $productInfo['description'] ?></p>
+                    <p class="card-text">Brand: <?php echo $productInfo['brand'] ?></p>
+                    <p class="card-text">Manufacturer: <?php echo $productInfo['manufacturer'] ?></p>
                     <span class="text-warning"><span class="ratingStars">
                                         <?php
                                         for ($i = 0; $i < 5; $i++) {
@@ -179,6 +185,9 @@ $productReviews = $shop->getProductReviews($productUID);
                 $("#starRatingNumber").val(value);
             }
         });
+
+        var cartItems = localStorage.getItem("cartItems");
+        $("#cartItems").text(cartItems);
     });
 </script>
 

@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(E_ALL ^ E_NOTICE);
 require_once "config.php";
 require_once "Shop.php";
 
@@ -10,7 +11,7 @@ $currentPage = empty($_GET['page']) ? 1 : $_GET['page'];
 $shop = new Shop();
 $categoriesList = $shop->getCategories();
 $productsList = $shop->getProductsFromCategory($categoryName, $currentPage);
-$pagesNumber = round($shop->getProductsNumberFromCategory($categoryName)/9);
+$pagesNumber = round($shop->getProductsNumberFromCategory($categoryName) / 9);
 $topItems = $shop->getTopRatings();
 ?>
 <!DOCTYPE html>
@@ -30,7 +31,8 @@ $topItems = $shop->getTopRatings();
 
     <!-- Custom styles for this template -->
     <link href="css/shop-homepage.css" rel="stylesheet">
-
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="js/shop.js"></script>
 </head>
 <style>
     .card-img-top {
@@ -39,7 +41,7 @@ $topItems = $shop->getTopRatings();
 
     .sliderImg {
         max-height: 300px;
-        padding-left: 16em;
+        padding-left: 8em;
     }
 
     .carousel-control-prev {
@@ -54,6 +56,17 @@ $topItems = $shop->getTopRatings();
         color: deepskyblue;
         font-size: 2em;
     }
+
+    .fa-cart-plus {
+        color: #ff6a00;
+        padding-left: 1em;
+        font-size: 2em;
+        cursor: pointer;
+    }
+
+    /*    .cartButton{
+            background-color: #343a40!important;
+        }*/
 </style>
 <body>
 
@@ -81,6 +94,12 @@ $topItems = $shop->getTopRatings();
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cart.php">
+                        <i class="fa fa-shopping-cart"></i> Cart
+                        <span class="badge badge-light" id="cartItems">0</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -95,7 +114,7 @@ $topItems = $shop->getTopRatings();
             <div class="list-group">
                 <?php
                 foreach ($categoriesList as $category) {
-                    echo "<a href=\"index.php?categoryName=" . $category['name'] . "\" class=\"list-group-item ".($categoryName == $category['name'] ? 'active' : '')." \">" . $category['name'] . "</a>";
+                    echo "<a href=\"index.php?categoryName=" . $category['name'] . "\" class=\"list-group-item " . ($categoryName == $category['name'] ? 'active' : '') . " \">" . $category['name'] . "</a>";
                 }
                 ?>
             </div>
@@ -135,11 +154,11 @@ $topItems = $shop->getTopRatings();
                         }
                         if ($index == 0) {
                             echo " <div class=\"carousel-item active align-content-center\">
-                                <img class=\"sliderImg d-block img-fluid\" src=\"" . $item['image_url'] . "\" alt=\"$alt\">                                 
+                                <div><div style='display: inline-block;float: left'><img class=\"sliderImg d-block img-fluid\" src=\"" . $item['image_url'] . "\" alt=\"$alt\"></div><div style='display: inline-block;max-width: 15em;padding-left: 3em'><h4 class=\"card-title\"><a href='product.php?categoryName=$categoryName&page=$currentPage&productUID=". $item['uid'] ."'>" . $item['name'] . "</a></h4><br>$" . $item['price'] . "</div></div>                                 
                             </div>";
                         } else {
                             echo " <div class=\"carousel-item center\">
-                                <img class=\"sliderImg d-block img-fluid\" src=\"" . $item['image_url'] . "\" alt=\"$alt\">
+                                <div><div style='display: inline-block;float: left'><img class=\"sliderImg d-block img-fluid\" src=\"" . $item['image_url'] . "\" alt=\"$alt\"></div><div style='display: inline-block;max-width: 15em;padding-left: 3em'><h4 class=\"card-title\"><a href='product.php?categoryName=$categoryName&page=$currentPage&productUID=". $item['uid'] ."'>" . $item['name'] . "</a></h4><br>$" . $item['price'] . "</div></div>
                             </div>";
                         }
 
@@ -162,7 +181,8 @@ $topItems = $shop->getTopRatings();
                     ?>
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
-                            <a href="product.php?categoryName=<?php echo $categoryName ?>&page=<?php echo $currentPage ?>&productUID=<?php echo $product['uid'] ?>"><img class="card-img-top" src="<?php echo $product['image_url'] ?>" alt=""></a>
+                            <a href="product.php?categoryName=<?php echo $categoryName ?>&page=<?php echo $currentPage ?>&productUID=<?php echo $product['uid'] ?>"><img
+                                        class="card-img-top" src="<?php echo $product['image_url'] ?>" alt=""></a>
                             <div class="card-body">
                                 <h4 class="card-title">
                                     <a href="product.php?categoryName=<?php echo $categoryName ?>&page=<?php echo $currentPage ?>&productUID=<?php echo $product['uid'] ?>"><?php echo $product['name'] ?></a>
@@ -182,6 +202,7 @@ $topItems = $shop->getTopRatings();
                                         }
                                         ?>
                                     </span></small>
+                                <i class="fa fa-cart-plus" onclick="addToCart('<?= $product['uid'] ?>')"></i>
                             </div>
                         </div>
                     </div>
@@ -194,7 +215,7 @@ $topItems = $shop->getTopRatings();
             echo "<div id='paginare' style='width: 95%; text-align: right;'>";
             if ($currentPage != 1) {
                 echo "&nbsp;<a href='index.php?categoryName=$categoryName&page=1' class='cale' title='First page'><<</a>";
-                $prevPage = $currentPage-1;
+                $prevPage = $currentPage - 1;
                 echo "&nbsp;<a href='index.php?categoryName=$categoryName&page=$prevPage' class='cale' title='Previous page'><</a>";
             }
             for ($i = ($currentPage - 2); $i <= ($currentPage + 2); $i++) {
@@ -205,7 +226,7 @@ $topItems = $shop->getTopRatings();
                 }
             }
             if ($currentPage != $pagesNumber) {
-                $nextPage = $currentPage+1;
+                $nextPage = $currentPage + 1;
                 echo "&nbsp;<a href='index.php?categoryName=$categoryName&page=$nextPage' class='cale' title='Next page' >></a>";
                 echo "&nbsp;<a href='index.php?categoryName=$categoryName&page=$pagesNumber' class='cale' title='Last page' >>></a>";
             }
@@ -231,7 +252,11 @@ $topItems = $shop->getTopRatings();
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 </body>
-
 </html>
+<script>
+    $(document).ready(function() {
+        var cartItems = localStorage.getItem("cartItems");
+        $("#cartItems").text(cartItems);
+    });
+</script>
