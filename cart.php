@@ -108,12 +108,6 @@ $total = 0;
     </div>
 </div>
 
-<footer class="py-5 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; PHP-Eshop 2020</p>
-    </div>
-    <!-- /.container -->
-</footer>
 <script>
     $(document).ready(function () {
         var cartItems = localStorage.getItem("cartItems");
