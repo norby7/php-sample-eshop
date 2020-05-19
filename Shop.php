@@ -27,7 +27,11 @@ class Shop
     }
 
     public function executeCreate(){
-        $create_script = "create table brands
+        $create_script = "CREATE OR REPLACE PROCEDURE createStructure()
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    create table brands
 (
     id         serial not null
         constraint brands_pk
@@ -154,9 +158,11 @@ alter table reviews
 
 create unique index reviews_id_uindex
     on reviews (id);
-
+END;
+$$;
 ";
-        $this->conn->query($create_script);
+        $this->conn->exec($create_script);
+        $this->conn->exec("CALL createStructure()");
     }
 
     public function getCategories()
