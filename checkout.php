@@ -16,13 +16,13 @@ $total = 0;
     <title>Shop Homepage - Start Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/shop-homepage.css" rel="stylesheet">
+    <link href="/css/shop-homepage.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="js/checkout.js"></script>
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="/js/checkout.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
 </head>
 <body class="bg-light" data-gr-c-s-loaded="true">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">

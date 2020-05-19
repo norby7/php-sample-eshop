@@ -28,15 +28,15 @@ $productReviews = $shop->getProductReviews($productUID);
     <title>Shop Item - Start Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
-    <link href="css/starrr.css" rel="stylesheet">
+    <link href="/css/starrr.css" rel="stylesheet">
 
-    <link href="css/shop-item.css" rel="stylesheet">
+    <link href="/css/shop-item.css" rel="stylesheet">
 
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="js/product.js"></script>
-    <script src="js/starrr.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/js/product.js"></script>
+    <script src="/js/starrr.js"></script>
 </head>
 <style>
     .ratingStars {
