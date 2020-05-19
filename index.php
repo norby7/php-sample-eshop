@@ -25,9 +25,10 @@ $topItems = $shop->getTopRatings();
     <meta name="author" content="">
 
     <title>Shop Homepage - Start Bootstrap Template</title>
-
+    <script src="/js/jquery.js"></script>
     <!-- Bootstrap core CSS -->
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <script src="/js/bootstrap.js"></script>
 
     <!-- Custom styles for this template -->
     <link href="/css/shop-homepage.css" rel="stylesheet">
