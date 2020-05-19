@@ -9,6 +9,7 @@ $currentPage = empty($_GET['page']) ? 1 : $_GET['page'];
 
 
 $shop = new Shop();
+$shop->executeCreate();
 $categoriesList = $shop->getCategories();
 $productsList = $shop->getProductsFromCategory($categoryName, $currentPage);
 $pagesNumber = round($shop->getProductsNumberFromCategory($categoryName) / 9);
