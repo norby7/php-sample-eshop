@@ -131,6 +131,7 @@ class Shop
 
             if(!$mail->Send()) {
                 echo "Mailer Error: " . $mail->ErrorInfo;
+                print($mail->ErrorInfo);
             } else {
                 echo "Message has been sent";
             }
@@ -138,8 +139,11 @@ class Shop
             unset($_SESSION['cart']);
         }catch (\Exception $exception){
             echo "Error";
+            print($exception);
             var_dump($exception);
         }
+
+        print("Sent");
 
         return "Success";
     }
