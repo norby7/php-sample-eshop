@@ -42,16 +42,17 @@ $topItems = $shop->getTopRatings();
 
     .sliderImg {
         max-height: 300px;
+        max-width: 400px;
         padding-left: 8em;
     }
 
-    .carousel-control-prev {
+/*    .carousel-control-prev {
         background-color: #005cbf;
     }
 
     .carousel-control-next {
         background-color: #005cbf;
-    }
+    }*/
 
     .ratingStars {
         color: deepskyblue;
