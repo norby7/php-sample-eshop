@@ -6,9 +6,9 @@ $shop = new Shop();
 $items = $shop->getCartItems();
 $total = 0;
 ?>
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="vendor/jquery/jquery.min.js"></script>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
