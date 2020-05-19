@@ -37,6 +37,7 @@ $productReviews = $shop->getProductReviews($productUID);
     <script src="/js/jquery.js"></script>
     <script src="/js/product.js"></script>
     <script src="/js/starrr.js"></script>
+    <script src="/js/shop.js"></script>
 </head>
 <style>
     .ratingStars {
@@ -58,7 +59,7 @@ $productReviews = $shop->getProductReviews($productUID);
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Shop name</a>
+        <a class="navbar-brand" href="#">PHP-Eshop</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -70,12 +71,6 @@ $productReviews = $shop->getProductReviews($productUID);
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="cart.php">
@@ -126,6 +121,7 @@ $productReviews = $shop->getProductReviews($productUID);
                                         ?>
                                     </span></span>
                     <span id="starsNumber"><?php echo $productInfo['rating'] ?></span> stars
+                    <button type="button" onclick="addToCart('<?= $productInfo['uid'] ?>')" class="btn btn-primary float-right"><i class="fa fa-cart-plus""></i> Add to cart</button>
                 </div>
             </div>
             <!-- /.card -->
@@ -166,7 +162,7 @@ $productReviews = $shop->getProductReviews($productUID);
 <!-- Footer -->
 <footer class="py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+        <p class="m-0 text-center text-white">Copyright &copy; PHP-Eshop 2020</p>
     </div>
     <!-- /.container -->
 </footer>

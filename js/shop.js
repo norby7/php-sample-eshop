@@ -17,7 +17,6 @@ function addToCart(productId) {
                 localStorage.setItem("cartItems", cartItems);
                 $("#cartItems").text(cartItems);
             }
-
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert(errorThrown)

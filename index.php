@@ -75,7 +75,7 @@ $topItems = $shop->getTopRatings();
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Shop name</a>
+        <a class="navbar-brand" href="#">PHP-Eshop</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -89,12 +89,6 @@ $topItems = $shop->getTopRatings();
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="cart.php">
@@ -246,7 +240,7 @@ $topItems = $shop->getTopRatings();
 <!-- Footer -->
 <footer class="py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+        <p class="m-0 text-center text-white">Copyright &copy; PHP-Eshop 2020</p>
     </div>
     <!-- /.container -->
 </footer>

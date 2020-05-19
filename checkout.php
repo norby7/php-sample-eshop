@@ -27,7 +27,7 @@ $total = 0;
 <body class="bg-light" data-gr-c-s-loaded="true">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Shop name</a>
+        <a class="navbar-brand" href="#">PHP-Eshop</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -39,12 +39,6 @@ $total = 0;
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="cart.php">
@@ -207,6 +201,13 @@ $total = 0;
         </div>
     </div>
 </div>
+
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; PHP-Eshop 2020</p>
+    </div>
+    <!-- /.container -->
+</footer>
 </body>
 <script>
     $(document).ready(function () {
