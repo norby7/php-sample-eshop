@@ -120,7 +120,7 @@ class Shop
             $mail->Username = "chatbot.gen@gmail.com";
             $mail->Password = "#chatbotgen1";
             $mail->SetFrom("chatbot.gen@gmail.com");
-            $mail->Subject = "Test";
+            $mail->Subject = "Command from PHP-Ehop";
             ob_start();
             include 'mail_template.php';
             $body = ob_get_clean();
